@@ -30,6 +30,6 @@ func UpdateHarianIndonesia(w http.ResponseWriter, r *http.Request) {
 func main() {
 	http.HandleFunc("/update-harian-indonesia", UpdateHarianIndonesia)
 
-	fmt.Println("Server running on port 8080")
-	http.ListenAndServe(":8080", nil)
+	fmt.Println("Server running on port 8000")
+	http.ListenAndServe(":8000", nil)
 }
