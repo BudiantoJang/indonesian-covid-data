@@ -82,6 +82,23 @@ func RiskScoreKecamatan(w http.ResponseWriter, r *http.Request) {
 func RumahSakitRujukan(w http.ResponseWriter, r *http.Request) {
 	enableCors(&w)
 	w.Header().Set("Content-Type", "application/json")
+	resp, err := http.Get("https://data.covid19.go.id/public/api/lab.json")
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+	}
+
+	body, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+	}
+
+	result := string(body)
+	w.Write([]byte(result))
+}
+
+func LabolatoriumRujukan(w http.ResponseWriter, r *http.Request) {
+	enableCors(&w)
+	w.Header().Set("Content-Type", "application/json")
 	resp, err := http.Get("https://data.covid19.go.id/public/api/rs.json")
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
@@ -103,6 +120,7 @@ func main() {
 	http.HandleFunc("v1/kasus-seluruh-provinsi", KasusSeluruhProvinsi)
 	http.HandleFunc("v1/risk-score-kecamatan", RiskScoreKecamatan)
 	http.HandleFunc("v1/rumah-sakit-rujukan", RumahSakitRujukan)
+	http.HandleFunc("v1/labolatorium-rujukan", LabolatoriumRujukan)
 
 	log.Print("listening on :" + port)
 	log.Fatal(http.ListenAndServe(":"+port, nil))
