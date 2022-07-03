@@ -1,9 +1,10 @@
 package main
 
 import (
-	"fmt"
 	"io/ioutil"
+	"log"
 	"net/http"
+	"os"
 )
 
 func enableCors(w *http.ResponseWriter) {
@@ -28,8 +29,9 @@ func UpdateHarianIndonesia(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
+	port := os.Getenv("PORT")
 	http.HandleFunc("/update-harian-indonesia", UpdateHarianIndonesia)
 
-	fmt.Println("Server running on port 8000")
-	http.ListenAndServe(":8000", nil)
+	log.Print("listening on :" + port)
+	log.Fatal(http.ListenAndServe(":"+port, nil))
 }
