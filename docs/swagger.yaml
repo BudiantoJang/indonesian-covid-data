@@ -1,9 +1,176 @@
 basePath: /v1
+definitions:
+  swaggerresponse.SwaggerErrorResponse:
+    properties:
+      status:
+        type: string
+    type: object
+  swaggerresponse.SwaggerSuccessResponse:
+    properties:
+      status:
+        type: string
+    type: object
 info:
   contact: {}
   description: This is an API documentation for Indonesian Covid Data API that is
     generated using OpenAPI 2.0 specification
   title: Indonesian Covid Data API Documentation
   version: v1
-paths: {}
+paths:
+  /berita-covid:
+    get:
+      description: An API that used to get Indonesia news regarding covid
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swaggerresponse.SwaggerSuccessResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/swaggerresponse.SwaggerErrorResponse'
+      summary: Berita Covid
+      tags:
+      - v1
+  /data-harian-provinsi:
+    get:
+      description: An API used to get Indonesian daily covid case update based on
+        provinces
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swaggerresponse.SwaggerSuccessResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/swaggerresponse.SwaggerErrorResponse'
+      summary: Data Harian Provinsi
+      tags:
+      - v1
+  /kasus-seluruh-provinsi:
+    get:
+      description: An API that used to get data of Indonesian covid based on provinces
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swaggerresponse.SwaggerSuccessResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/swaggerresponse.SwaggerErrorResponse'
+      summary: KasusSeluruhProvinsi
+      tags:
+      - v1
+  /labolatorium-rujukan:
+    get:
+      description: An API used to get Indonesian labolatorium that treats covid patients
+        data
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swaggerresponse.SwaggerSuccessResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/swaggerresponse.SwaggerErrorResponse'
+      summary: Labolatorium
+      tags:
+      - v1
+  /pemeriksaan-dan-vaksinasi:
+    get:
+      description: An API that used to get data of Indonesian covid checkup and vaccination
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swaggerresponse.SwaggerSuccessResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/swaggerresponse.SwaggerErrorResponse'
+      summary: Pemeriksaan dan Vaksinasi
+      tags:
+      - v1
+  /risk-score-kecamatan:
+    get:
+      description: An API that used to get Indonesia risk score data based on districs
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swaggerresponse.SwaggerSuccessResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/swaggerresponse.SwaggerErrorResponse'
+      summary: Risk Score Kecamatan
+      tags:
+      - v1
+  /risk-score-provinsi:
+    get:
+      description: An API that used to get Indonesia risk score data based on provinces
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swaggerresponse.SwaggerSuccessResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/swaggerresponse.SwaggerErrorResponse'
+      summary: Risk Score Provinsi
+      tags:
+      - v1
+  /rumah-sakit-rujukan:
+    get:
+      description: An API used to get Indonesian hospital that treats covid patients
+        data
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swaggerresponse.SwaggerSuccessResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/swaggerresponse.SwaggerErrorResponse'
+      summary: Rumah Sakit Rujukan
+      tags:
+      - v1
+  /update-harian-indonesia:
+    get:
+      description: An API that used to get data of Indonesian daily covid case
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swaggerresponse.SwaggerSuccessResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/swaggerresponse.SwaggerErrorResponse'
+      summary: Update Harian Indonesia
+      tags:
+      - v1
 swagger: "2.0"
