@@ -147,6 +147,23 @@ func RiskScoreProvinsi(w http.ResponseWriter, r *http.Request) {
 	w.Write([]byte(result))
 }
 
+func BeritaCovid(w http.ResponseWriter, r *http.Request) {
+	enableCors(&w)
+	w.Header().Set("Content-Type", "application/json")
+	resp, err := http.Get("https://newsapi.org/v2/everything?q=covid&apiKey=4f8b1414b1634e198f8758eef4d8daf2&domains=detik.com")
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+	}
+
+	body, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+	}
+
+	result := string(body)
+	w.Write([]byte(result))
+}
+
 func main() {
 	port := os.Getenv("PORT")
 	http.HandleFunc("v1/update-harian-indonesia", UpdateHarianIndonesia)
@@ -156,7 +173,8 @@ func main() {
 	http.HandleFunc("v1/rumah-sakit-rujukan", RumahSakitRujukan)
 	http.HandleFunc("v1/labolatorium-rujukan", LabolatoriumRujukan)
 	http.HandleFunc("v1/data-harian-provinsi", DataHarianProvinsi)
-	http.HandleFunc("v1/risk-score-provinsi", DataHarianProvinsi)
+	http.HandleFunc("v1/risk-score-provinsi", RiskScoreProvinsi)
+	http.HandleFunc("v1/berita-covid", BeritaCovid)
 
 	log.Print("listening on :" + port)
 	log.Fatal(http.ListenAndServe(":"+port, nil))
