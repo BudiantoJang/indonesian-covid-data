@@ -164,6 +164,10 @@ func BeritaCovid(w http.ResponseWriter, r *http.Request) {
 	w.Write([]byte(result))
 }
 
+// @title Indonesian Covid Data API Documentation
+// @description This is an API documentation for Indonesian Covid Data API that is generated using OpenAPI 2.0 specification
+// @version v1
+// @BasePath /v1
 func main() {
 	port := os.Getenv("PORT")
 	http.HandleFunc("v1/update-harian-indonesia", UpdateHarianIndonesia)

@@ -20,12 +20,12 @@ const docTemplate = `{
 
 // SwaggerInfo holds exported Swagger Info so clients can modify it
 var SwaggerInfo = &swag.Spec{
-	Version:          "",
+	Version:          "v1",
 	Host:             "",
-	BasePath:         "",
+	BasePath:         "/v1",
 	Schemes:          []string{},
-	Title:            "",
-	Description:      "",
+	Title:            "Indonesian Covid Data API Documentation",
+	Description:      "This is an API documentation for Indonesian Covid Data API that is generated using OpenAPI 2.0 specification",
 	InfoInstanceName: "swagger",
 	SwaggerTemplate:  docTemplate,
 }
