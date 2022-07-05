@@ -233,16 +233,16 @@ func BeritaCovid(w http.ResponseWriter, r *http.Request) {
 // @BasePath /v1
 func main() {
 	port := os.Getenv("PORT")
-	http.HandleFunc("v1/update-harian-indonesia", UpdateHarianIndonesia)
-	http.HandleFunc("v1/pemeriksaan-dan-vaksinasi", PemeriksaanDanVaksinasi)
-	http.HandleFunc("v1/kasus-seluruh-provinsi", KasusSeluruhProvinsi)
-	http.HandleFunc("v1/risk-score-kecamatan", RiskScoreKecamatan)
-	http.HandleFunc("v1/rumah-sakit-rujukan", RumahSakitRujukan)
-	http.HandleFunc("v1/labolatorium-rujukan", LabolatoriumRujukan)
-	http.HandleFunc("v1/data-harian-provinsi", DataHarianProvinsi)
-	http.HandleFunc("v1/risk-score-provinsi", RiskScoreProvinsi)
-	http.HandleFunc("v1/berita-covid", BeritaCovid)
+	http.HandleFunc("/v1/update-harian-indonesia", UpdateHarianIndonesia)
+	http.HandleFunc("/v1/pemeriksaan-dan-vaksinasi", PemeriksaanDanVaksinasi)
+	http.HandleFunc("/v1/kasus-seluruh-provinsi", KasusSeluruhProvinsi)
+	http.HandleFunc("/v1/risk-score-kecamatan", RiskScoreKecamatan)
+	http.HandleFunc("/v1/rumah-sakit-rujukan", RumahSakitRujukan)
+	http.HandleFunc("/v1/labolatorium-rujukan", LabolatoriumRujukan)
+	http.HandleFunc("/v1/data-harian-provinsi", DataHarianProvinsi)
+	http.HandleFunc("/v1/risk-score-provinsi", RiskScoreProvinsi)
+	http.HandleFunc("/v1/berita-covid", BeritaCovid)
 
 	log.Print("listening on :" + port)
-	log.Fatal(http.ListenAndServe(":"+port, nil))
+	log.Fatal(http.ListenAndServe(":"+"8000", nil))
 }
