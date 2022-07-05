@@ -244,5 +244,5 @@ func main() {
 	http.HandleFunc("/v1/berita-covid", BeritaCovid)
 
 	log.Print("listening on :" + port)
-	log.Fatal(http.ListenAndServe(":"+"8000", nil))
+	log.Fatal(http.ListenAndServe(":"+port, nil))
 }
